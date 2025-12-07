@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site 'N' Library - Level 2 DFD Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+        }
+        
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #764ba2;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        
+        .dfd-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            border-radius: 8px;
+        }
+        
+        .dfd-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .process-description {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .process-description h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+        
+        .flow-diagram {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px solid #667eea;
+            overflow-x: auto;
+        }
+        
+        svg {
+            width: 100%;
+            height: auto;
+            min-height: 400px;
+        }
+        
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+            background: white;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #667eea;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .data-store {
+            background: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        
+        .external-entity {
+            background: #d4edda;
+            padding: 15px;
+            border-left: 4px solid #28a745;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        
+        .data-flow {
+            background: #cfe2ff;
+            padding: 15px;
+            border-left: 4px solid #0d6efd;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        
+        .comparison-table {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .comparison-box {
+            background: white;
+            padding: 20px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+        }
+        
+        .comparison-box h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #667eea;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+            }
+            
+            .comparison-table {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Site 'N' Library Management System</h1>
+            <p class="subtitle">Level 2 Data Flow Diagram Analysis</p>
+            <p style="margin-top: 10px; color: #666;">Kathmandu, Naxal | 10,000+ Books Collection</p>
+        </header>
+
+        <!-- PROCESS 1: BOOK ISSUANCE -->
+        <div class="dfd-section">
+            <h2>Process 1.0: Book Issuance Process</h2>
+            
+            <div class="process-description">
+                <h3>Overview</h3>
+                <p>The Book Issuance Process handles the complete workflow when a user requests to borrow a book from the library. This includes validating user membership, checking book availability, recording the transaction, and updating inventory. This is a critical operation performed by the Librarian with system support.</p>
+            </div>
+
+            <h3>Level 2 DFD Diagram - Book Issuance Process (1.0)</h3>
+            <div class="flow-diagram">
+                <svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Title -->
+                    <text x="500" y="30" font-size="24" font-weight="bold" text-anchor="middle" fill="#667eea">Process 1.0: Book Issuance</text>
+                    
+                    <!-- External Entities -->
+                    <!-- User -->
+                    <rect x="50" y="100" width="120" height="80" fill="#d4edda" stroke="#28a745" stroke-width="2" rx="5"/>
+                    <text x="110" y="145" font-weight="bold" text-anchor="middle" font-size="14">User</text>
+                    
+                    <!-- Librarian -->
+                    <rect x="50" y="350" width="120" height="80" fill="#d4edda" stroke="#28a745" stroke-width="2" rx="5"/>
+                    <text x="110" y="395" font-weight="bold" text-anchor="middle" font-size="14">Librarian</text>
+                    
+                    <!-- Sub-processes -->
+                    <!-- 1.1 Verify User & Book -->
+                    <rect x="250" y="80" width="140" height="100" fill="#e7f3ff" stroke="#667eea" stroke-width="2" rx="5"/>
+                    <text x="320" y="120" font-weight="bold" text-anchor="middle" font-size="13">1.1</text>
+                    <text x="320" y="140" font-weight="bold" text-anchor="middle" font-size="12">Verify User</text>
+                    <text x="320" y="158" font-weight="bold" text-anchor="middle" font-size="12">&amp; Book</text>
+                    <text x="320" y="175" font-size="11" text-anchor="middle">Availability</text>
+                    
+                    <!-- 1.2 Check Fine Status -->
+                    <rect x="480" y="80" width="140" height="100" fill="#e7f3ff" stroke="#667eea" stroke-width="2" rx="5"/>
+                    <text x="550" y="120" font-weight="bold" text-anchor="middle" font-size="13">1.2</text>
+                    <text x="550" y="140" font-weight="bold" text-anchor="middle" font-size="12">Check User</text>
+                    <text x="550" y="158" font-weight="bold" text-anchor="middle" font-size="12">Fine Status</text>
+                    <text x="550" y="175" font-size="11" text-anchor="middle">&amp; Penalties</text>
+                    
+                    <!-- 1.3 Record Transaction -->
+                    <rect x="710" y="80" width="140" height="100" fill="#e7f3ff" stroke="#667eea" stroke-width="2" rx="5"/>
+                    <text x="780" y="120" font-weight="bold" text-anchor="middle" font-size="13">1.3</text>
+                    <text x="780" y="140" font-weight="bold" text-anchor="middle" font-size="12">Record</text>
+                    <text x="780" y="158" font-weight="bold" text-anchor="middle" font-size="12">Transaction</text>
+                    <text x="780" y="175" font-size="11" text-anchor="middle">&amp; Due Date</text>
+                    
+                    <!-- 1.4 Update Inventory -->
+                    <rect x="480" y="280" width="140" height="100" fill="#e7f3ff" stroke="#667eea" stroke-width="2" rx="5"/>
+                    <text x="550" y="320" font-weight="bold" text-anchor="middle" font-size="13">1.4</text>
+                    <text x="550" y="340" font-weight="bold" text-anchor="middle" font-size="12">Update Book</text>
+                    <text x="550" y="358" font-weight="bold" text-anchor="middle" font-size="12">Inventory</text>
+                    <text x="550" y="375" font-size="11" text-anchor="middle">Status</text>
+                    
+                    <!-- Data Stores -->
+                    <!-- Users DB -->
+                    <line x1="340" y1="420" x2="340" y2="460"/>
+                    <line x1="280" y1="420" x2="400" y2="420"/>
+                    <line x1="280" y1="460" x2="400" y2="460"/>
+                    <text x="340" y="445" text-anchor="middle" font-weight="bold" font-size="12">D1: Users</text>
+                    
+                    <!-- Books DB -->
+                    <line x1="570" y1="420" x2="570" y2="460"/>
+                    <line x1="510" y1="420" x2="630" y2="420"/>
+                    <line x1="510" y1="460" x2="630" y2="460"/>
+                    <text x="570" y="445" text-anchor="middle" font-weight="bold" font-size="12">D2: Books</text>
+                    
+                    <!-- Issuance Records DB -->
+                    <line x1="800" y1="420" x2="800" y2="460"/>
+                    <line x1="740" y1="420" x2="860" y2="420"/>
+                    <line x1="740" y1="460" x2="860" y2="460"/>
+                    <text x="800" y="445" text-anchor="middle" font-weight="bold" font-size="12">D3: Issue Records</text>
+                    
+                    <!-- Data Flows - Arrows with labels -->
+                    <!-- User to 1.1 -->
+                    <path d="M 170 140 L 250 130" stroke="#0d6efd" stroke-width="2" fill="none" marker-end="url(#arrowblue)"/>
+                    <text x="210" y="120" font-size="10" fill="#0d6efd">Issue Request</text>
+                    
+                    <!-- 1.1 to 1.2 -->
+                    <path d="M 390 130 L 480 130" stroke="#0d6efd" stroke-width="2" fill="none" marker-end="url(#arrowblue)"/>
+                    <text x="435" y="120" font-size="10" fill="#0d6efd">Verify Result</text>
+                    
+                    <!-- 1.2 to 1.3 -->
+                    <path d="M 620 130 L 710 130" stroke="#0d6efd" stroke-width="2" fill="none" marker-end="url(#arrowblue)"/>
+                    <text x="665" y="120" font-size="10" fill="#0d6efd">Fine Check OK</text>
+                    
+                    <!-- 1.3 to 1.4 -->
+                    <path d="M 780 180 L 610 280" stroke="#0d6efd" stroke-width="2" fill="none" marker-end="url(#arrowblue)"/>
+                    <text x="720" y="230" font-size="10" fill="#0d6efd">Book Data</text>
+                    
+                    <!-- 1.1 to D1 -->
+                    <path d="M 320 180 L 340 420" stroke="#28a745" stroke-width="2" fill="none" marker-end="url(#arrowgreen)"/>
+                    <text x="315" y="300" font-size="9" fill="#28a745">Query</text>
+                    
+                    <!-- 1.2 to D1 -->
+                    <path d="M 530 180 L 360 420" stroke="#28a745" stroke-width="2" fill="none" marker-end="url(#arrowgreen)"/>
+                    <text x="515" y="300" font-size="9" fill="#28a745">Query</text>
+                    
+                    <!-- 1.1 to D2 -->
+                    <path d="M 360 180 L 560 420" stroke="#28a745" stroke-width="2" fill="none" marker-end="url(#arrowgreen)"/>
+                    <text x="410" y="300" font-size="9" fill="#28a745">Query</text>
+                    
+                    <!-- 1.4 to D2 -->
+                    <path d="M 550 380 L 570 420" stroke="#28a745" stroke-width="2" fill="none" marker-end="url(#arrowgreen)"/>
+                    <text x="530" y="400" font-size="9" fill="#28a745">Update</text>
+                    
+                    <!-- 1.3 to D3 -->
+                    <path d="M 800 180 L 800 420" stroke="#28a745" stroke-width="2" fill="none" marker-end="url(#arrowgreen)"/>
+                    <text x="780" y="300" font-size="9" fill="#28a745">Store</text>
+                    
+                    <!-- Librarian receives confirmation -->
+                    <path d="M 780 180 L 170 390" stroke="#0d6efd" stroke-width="2" fill="none" marker-end="url(#arrowblue)" stroke-dasharray="5,5"/>
+                    <text x="450" y="300" font-size="10" fill="#0d6efd">Issue Confirmation</text>
+                    
+                    <!-- Arrow markers -->
+                    <defs>
+                        <marker id="arrowblue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                            <path d="M0,0 L0,6 L9,3 z" fill="#0d6efd"/>
+                        </marker>
+                        <marker id="arrowgreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                            <path d="M0,0 L0,6 L9,3 z" fill="#28a745"/>
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+
+            <h3>Sub-processes Details</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Process</th>
+                        <th>Description</th>
+                        <th>Input</th>
+                        <th>Output</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1.1</strong> Verify User & Book Availability</td>
+                        <td>Check if user is registered and active; verify book exists and is available for issuance</td>
+                        <td>User ID, Book ID</td>
+                        <td>Verification Status, Book Details</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1.2</strong> Check User Fine Status</td>
+                        <td>Verify user has no outstanding fines or penalties that prevent book issuance</td>
+                        <td>User ID, Fine Records</td>
+                        <td>Fine Status (Clear/Blocked)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1.3</strong> Record Transaction</td>
+                        <td>Create issue record with issuance date, due date, and other transaction details</td>
+                        <td>User ID, Book ID, Issue Date</td>
+                        <td>Issue Record, Issue ID</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1.4</strong> Update Book Inventory</td>
+                        <td>Mark book as issued, reduce available copies, update book status</td>
+                        <td>Book ID, New Status</td>
+                        <td>Updated Book Record</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Data Stores</h3>
+            <div class="data-store">
+                <strong>D1: Users Database</strong><br>
+                Stores user profiles, registration info, membership status, contact details, and account information.
+            </div>
+            <div class="data-store">
+                <strong>D2: Books Database</strong><br>
+                Contains book catalog with title, author, ISBN, availability status, location, and inventory count.
+            </div>
+            <div class="data-store">
+                <strong>D3: Issue Records Database</strong><br>
+                Maintains historical and current issue transactions including issuance date, due date, return status, and fines.
+            </div>
+
+            <h3>Data Flows</h3>
+            <div class="data-flow">
+                <strong>User → Process 1.1:</strong> Issue Request (User ID, Book ID)<br>
+                <strong>Process 1.1 ↔ D1:</strong> User Verification Query<br>
+                <strong>Process 1.1 ↔ D2:</strong> Book Availability Query<br>
+                <strong>Process 1.2 ↔ D1:</strong> Fine Records Query<br>
+                <strong>Process 1.3 → D3:</strong> Store New Issue Record<br>
+                <strong>Process 1.4 → D2:</strong> Update Book Status<br>
+                <strong>Process 1.3 → Librarian:</strong> Issue Confirmation & Receipt
+            </div>
+        </div>
+
+        <!-- PROCESS 2: USER REGISTRATION -->
+        <div class="dfd-section">
+            <h2>Process 2.0: User Registration Process</h2>
+            
+            <div class="process-description">
+                <h3>Overview</h3>
+                <p>The User Registration Process allows new users to create accounts and gain access to the library system. This involves collecting user information, validating credentials, checking for duplicates, storing user data, and generating confirmation. New users must complete this process before they can access any library services or issue books.</p>
+            </div>
+
+            <h3>Level 2 DFD Diagram - User Registration Process (2.0)</h3>
+            <div class="flow-diagram">
+                <svg viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Title -->
+                    <text x="500" y="30" font-size="24" font-weight="bold" text-anchor="middle" fill="#667eea">Process 2.0: User Registration</text>
+                    
+                    <!-- External Entities -->
+                    <!-- New User -->
+                    <rect x="50" y="100" width="120" height="80" fill="#d4edda" stroke="#28a745" stroke-width="2" rx="5"/>
+                    <text x="110" y="145" font-weight="bold" text-anchor="middle" font-size="14">New User</text>
+                    
+                    <!-- Librarian/Admin -->
+                    <rect x="50" y="350" width="120" height="80" fill="#d4edda" stroke="#28a745" stroke-width="2" rx="5"/>
+                    <text x="110" y="380" font-weight="bold" text-anchor="middle" font-size="12">Librarian/</text>
+                    <text x="110" y="398" font-weight="bold" text-anchor="middle" font-size="12">Admin</text>
+                    
+                    <!-- Sub-processes -->
+                    <!-- 2.1 Collect User Info -->
+                    <rect x="250" y="80" width="140" height="100" fill="#e7f3ff" stroke="#667eea" stroke-width="2" rx="5"/>
+                    <text x="320" y="120" font-weight="bold" text-anchor="middle" font-size="13">2.1</text>
+                    <text x="320" y="140" font-weight="bold" text-anchor="middle" font-size="12">Collect User</text>
+                    <text x="320" y="158" font-weight="bold" text-anchor="middle" font-size="12">Information</text>
+                    <text x="320" y="175" font-size="11" text-anchor="middle">&amp; Details</text>
+                    
+                    <!-- 2.2 Validate Input -->
+                    <rect x="480" y="80" width="140" height="100" fill="#e7f3ff" stroke="#667eea" stroke-width="2" rx="5"/>
+                    <text x="550" y="120" font-weight="bold" text-anchor="middle" font-size="13">2.2</text>
+                    <text x="550" y="140" font-weight="bold" text-anchor="middle" font-size="12">Validate</text>
+                    <text x="550" y="158" font-weight="bold" text-anchor="middle" font-size="12">Input Data</text>
+                    <text x="550" y="175" font-size="11" text-anchor="middle">&amp; Format</text>
+                    
+                    <!-- 2.3 Check Duplicates -->
+                    <rect x="710" y="80" width="140" height="100" fill="#e7f3ff" stroke="#667eea" stroke-width="2" rx="5"/>
+                    <text x="780" y="120" font-weight="bold" text-anchor="middle" font-size="13">2.3</text>
+                    <text x="780" y="140" font-weight="bold" text-anchor="middle" font-size="12">Check for</text>
+                    <text x="780" y="158" font-weight="bold" text-anchor="middle" font-size="12">Duplicate</text>
+                    <text x="780" y="175" font-size="11" text-anchor="middle">Accounts</text>
+                    
+                    <!-- 2.4 Generate Credentials -->
+                    <rect x="250" y="280" width="140" height="100" fill="#e7f3ff" stroke="#667eea" stroke-width="2" rx="5"/>
+                    <text x="320" y="320" font-weight="bold" text-anchor="middle" font-size="13">2.4</text>
+                    <text x="320" y="340" font-weight="bold" text-anchor="middle" font-size="12">Generate</text>
+                    <text x="320" y="358" font-weight="bold" text-anchor="middle" font-size="12">User ID &amp;</text>
+                    <text x="320" y="375" font-size="11" text-anchor="middle">Password</text>
+                    
+                    <!-- 2.5 Store User Record -->
+                    <rect x="480" y="280" width="140" height="100" fill="#e7f3ff" stroke="#667eea" stroke-width="2" rx="5"/>
+                    <text x="550" y="320" font-weight="bold" text-anchor="middle" font-size="13">2.5</text>
+                    <text x="550" y="340" font-weight="bold" text-anchor="middle" font-size="12">Store User</text>
+                    <text x="550" y="358" font-weight="bold" text-anchor="middle" font-size="12">Record in</text>
+                    <text x="550" y="375" font-size="11" text-anchor="middle">Database</text>
+                    
+                    <!-- Data Stores -->
+                    <!-- Users DB -->
+                    <line x1="340" y1="420" x2="340" y2="460"/>
+                    <line x1="280" y1="420" x2="400" y2="420"/>
+                    <line x1="280" y1="460" x2="400" y2="460"/>
+                    <text x="340" y="445" text-anchor="middle" font-weight="bold" font-size="12">D4: Users</text>
+                    
+                    <!-- Activity Log DB -->
+                    <line x1="570" y1="420" x2="570" y2="460"/>
+                    <line x1="510" y1="420" x2="630" y2="420"/>
+                    <line x1="510" y1="460" x2="630" y2="460"/>
+                    <text x="570" y="445" text-anchor="middle" font-weight="bold" font-size="12">D5: Activity Log</text>
+                    
+                    <!-- Data Flows - Arrows with labels -->
+                    <!-- New User to 2.1 -->
+                    <path d="M 170 140 L 250 130" stroke="#0d6efd" stroke-width="2" fill="none" marker-end="url(#arrowblue2)"/>
+                    <text x="210" y="120" font-size="10" fill="#0d6efd">Registration Form</text>
+                    
+                    <!-- 2.1 to 2.2 -->
+                    <path d="M 390 130 L 480 130" stroke="#0d6efd" stroke-width="2" fill="none" marker-end="url(#arrowblue2)"/>
+                    <text x="435" y="120" font-size="10" fill="#0d6efd">User Data</text>
+                    
+                    <!-- 2.2 to 2.3 -->
+                    <path d="M 620 130 L 710 130" stroke="#0d6efd" stroke-width="2" fill="none" marker-end="url(#arrowblue2)"/>
+                    <text x="665" y="120" font-size="10" fill="#0d6efd">Valid Data</text>
+                    
+                    <!-- 2.3 to 2.4 -->
+                    <path d="M 780 180 L 390 280" stroke="#0d6efd" stroke-width="2" fill="none" marker-end="url(#arrowblue2)"/>
+                    <text x="620" y="230" font-size="10" fill="#0d6efd">Duplicate Check OK</text>
+                    
+                    <!-- 2.4 to 2.5 -->
+                    <path d="M 390 330 L 480 330" stroke="#0d6efd" stroke-width="2" fill="none" marker-end="url(#arrowblue2)"/>
+                    <text x="435" y="320" font-size="10" fill="#0d6efd">Credentials</text>
+                    
+                    <!-- 2.3 to D4 -->
+                    <path d="M 780 180 L 360 420" stroke="#28a745" stroke-width="2" fill="none" marker-end="url(#arrowgreen2)"/>
+                    <text x="600" y="300" font-size="9" fill="#28a745">Query</text>
+                    
+                    <!-- 2.5 to D4 -->
+                    <path d="M 550 380 L 360 420" stroke="#28a745" stroke-width="2" fill="none" marker-end="url(#arrowgreen2)"/>
+                    <text x="530" y="400" font-size="9" fill="#28a745">Store</text>
+                    
+                    <!-- 2.5 to D5 -->
+                    <path d="M 570 380 L 570 420" stroke="#28a745" stroke-width="2" fill="none" marker-end="url(#arrowgreen2)"/>
+                    <text x="550" y="400" font-size="9" fill="#28a745">Log</text>
+                    
+                    <!-- Confirmation to User -->
+                    <path d="M 320 180 L 150 140" stroke="#0d6efd" stroke-width="2" fill="none" marker-end="url(#arrowblue2)" stroke-dasharray="5,5"/>
+                    <text x="220" y="160" font-size="10" fill="#0d6efd">Confirmation</text>
+                    
+                    <!-- Notification to Admin -->
+                    <path d="M 550 380 L 170 390" stroke="#0d6efd" stroke-width="2" fill="none" marker-end="url(#arrowblue2)" stroke-dasharray="5,5"/>
+                    <text x="350" y="390" font-size="10" fill="#0d6efd">Registration Alert</text>
+                    
+                    <!-- Arrow markers -->
+                    <defs>
+                        <marker id="arrowblue2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                            <path d="M0,0 L0,6 L9,3 z" fill="#0d6efd"/>
+                        </marker>
+                        <marker id="arrowgreen2" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+                            <path d="M0,0 L0,6 L9,3 z" fill="#28a745"/>
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+
+            <h3>Sub-processes Details</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Process</th>
+                        <th>Description</th>
+                        <th>Input</th>
+                        <th>Output</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>2.1</strong> Collect User Information</td>
+                        <td>Gather registration details including name, email, phone, address, date of birth, identification</td>
+                        <td>Registration Form</td>
+                        <td>User Information Data</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2.2</strong> Validate Input Data</td>
+                        <td>Verify email format, phone format, password strength, age requirements, mandatory fields</td>
+                        <td>User Information</td>
+                        <td>Validation Status (Pass/Fail)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2.3</strong> Check for Duplicate Accounts</td>
+                        <td>Query database to ensure email/phone not already registered, prevent duplicate registrations</td>
+                        <td>Email, Phone Number</td>
+                        <td>Duplicate Status (Exists/Available)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2.4</strong> Generate User ID & Password</td>
+                        <td>Create unique user ID, generate temporary password or send password reset link</td>
+                        <td>User Information</td>
+                        <td>User ID, Password Credentials</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2.5</strong> Store User Record</td>
+                        <td>Save complete user profile to database with initial status (active), create account entry</td>
+                        <td>User Credentials, Information</td>
+                        <td>User Record Stored, Confirmation</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Data Stores</h3>
+            <div class="data-store">
+                <strong>D4: Users Database</strong><br>
+                Stores complete user profiles including name, contact details, identification, account status, registration date, and login credentials.
+            </div>
+            <div class="data-store">
+                <strong>D5: Activity Log Database</strong><br>
+                Records all registration activities, login attempts, system access, and administrative actions for audit purposes.
+            </div>
+
+            <h3>Data Flows</h3>
+            <div class="data-flow">
+                <strong>New User → Process 2.1:</strong> Registration Form (Name, Email, Phone, Address, etc.)<br>
+                <strong>Process 2.1 → Process 2.2:</strong> Collected User Data<br>
+                <strong>Process 2.2 → Process 2.3:</strong> Validated Data<br>
+                <strong>Process 2.3 ↔ D4:</strong> Duplicate Check Query<br>
+                <strong>Process 2.3 → Process 2.4:</strong> Duplicate Check Passed<br>
+                <strong>Process 2.4 → Process 2.5:</strong> Generated Credentials<br>
+                <strong>Process 2.5 → D4:</strong> Store New User Record<br>
+                <strong>Process 2.5 → D5:</strong> Log Registration Activity<br>
+                <strong>Process 2.5 → New User:</strong> Registration Confirmation<br>
+                <strong>Process 2.5 → Librarian/Admin:</strong> Registration Alert & Notification
+            </div>
+        </div>
+
+        <!-- COMPARISON TABLE -->
+        <div class="dfd-section">
+            <h2>Process Comparison Summary</h2>
+            <div class="comparison-table">
+                <div class="comparison-box">
+                    <h4>📕 Process 1.0: Book Issuance</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Primary Actor:</strong> Librarian</li>
+                        <li><strong>Initiator:</strong> User Request</li>
+                        <li><strong>Goal:</strong> Issue book to user</li>
+                        <li><strong>Sub-processes:</strong> 4</li>
+                        <li><strong>Data Stores:</strong> 3 (Users, Books, Records)</li>
+                        <li><strong>Key Activity:</strong> Verification & Recording</li>
+                    </ul>
+                </div>
+                <div class="comparison-box">
+                    <h4>👤 Process 2.0: User Registration</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Primary Actor:</strong> New User</li>
+                        <li><strong>Initiator:</strong> Registration Form</li>
+                        <li><strong>Goal:</strong> Create user account</li>
+                        <li><strong>Sub-processes:</strong> 5</li>
+                        <li><strong>Data Stores:</strong> 2 (Users, Activity Log)</li>
+                        <li><strong>Key Activity:</strong> Validation & Storage</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- KEY ENTITIES TABLE -->
+        <div class="dfd-section">
+            <h2>Key Entities & Their Roles</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Entity Type</th>
+                        <th>Entity Name</th>
+                        <th>Role in Process 1.0</th>
+                        <th>Role in Process 2.0</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>External</strong></td>
+                        <td>User</td>
+                        <td>Initiates book issue request</td>
+                        <td>Submits registration form</td>
+                    </tr>
+                    <tr>
+                        <td><strong>External</strong></td>
+                        <td>Librarian</td>
+                        <td>Processes issuance, generates receipt</td>
+                        <td>Receives registration alerts, manages accounts</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Store</strong></td>
+                        <td>Users Database</td>
+                        <td>Verifies user status & fines</td>
+                        <td>Stores new user accounts</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Store</strong></td>
+                        <td>Books Database</td>
+                        <td>Checks availability, updates inventory</td>
+                        <td>Not applicable</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Store</strong></td>
+                        <td>Issue Records Database</td>
+                        <td>Stores issuance transactions</td>
+                        <td>Not applicable</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Data Store</strong></td>
+                        <td>Activity Log</td>
+                        <td>Not applicable</td>
+                        <td>Records registration activities</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- NOTES SECTION -->
+        <div class="dfd-section">
+            <h2>Important Notes & Observations</h2>
+            <div style="background: white; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                <h4 style="color: #667eea; margin-bottom: 10px;">Process Dependencies</h4>
+                <p>• Process 2.0 (User Registration) must complete successfully before Process 1.0 (Book Issuance) can be executed<br>
+                • A valid user account is a prerequisite for any book-related transactions<br>
+                • The system enforces data integrity through the database relationships</p>
+                
+                <h4 style="color: #667eea; margin-top: 15px; margin-bottom: 10px;">Data Validation</h4>
+                <p>• Input validation occurs at multiple levels (Process 2.2 and Process 1.1)<br>
+                • Duplicate checking prevents invalid registrations<br>
+                • Fine status checking prevents users with pending penalties from issuing books</p>
+                
+                <h4 style="color: #667eea; margin-top: 15px; margin-bottom: 10px;">Security Considerations</h4>
+                <p>• User passwords should be encrypted and stored securely<br>
+                • Activity logs maintain audit trails for compliance<br>
+                • Access to these processes should be role-based (User, Librarian, Admin)</p>
+                
+                <h4 style="color: #667eea; margin-top: 15px; margin-bottom: 10px;">Error Handling</h4>
+                <p>• Invalid input: Process returns error to user for correction<br>
+                • Duplicate account: Process terminates and notifies user<br>
+                • Book unavailable: Issuance process terminates; user offered reservation option<br>
+                • User fine: Process blocks issuance until fine is cleared</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Site 'N' Library Management System</strong></p>
+            <p>Level 2 DFD Analysis | Created for System Design Documentation</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #999;">
+                These Level 2 DFDs provide detailed views of critical processes with sub-processes, data stores, and data flows clearly illustrated.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
